@@ -1,4 +1,5 @@
-import java.util.Scanner;
+import java.util.*;
+
 
 //cadastrar livro
 //consultar disponibilidade
@@ -10,16 +11,18 @@ public class Livro {
 	private int IDLivro;
 	private int IDMembro;
 	private String nome;
-	private int estado;
+	private String estado;
+	private int preco;
+	private GregorianCalendar dataRetorno;
 	
 	
-	public Livro(int IDLivro, String nome, int estado, int IDMembro){
+	public Livro(int IDLivro, String nome, String estado, int IDMembro, int preco, GregorianCalendar dataRetorno){
 		this.IDMembro=IDMembro;
 		this.nome=nome;
 		this.estado=estado;
 		this.IDLivro=IDLivro;
-
-			
+		this.preco=preco;			
+		this.dataRetorno=dataRetorno;
 	}
 	
 	public int getIDLivro () {
@@ -47,12 +50,28 @@ public class Livro {
 		this.nome=nome;
 	}
 	
-	public int getEstado () {
+	public String getEstado () {
 		return estado;	
 	}
 
-	public void setEstado(int estado) {
+	public void setEstado(String estado) {
 		this.estado=estado;
+	}
+	
+	public int getPreco () {
+		return preco;	
+	}
+
+	public void setPreco(int preco) {
+		this.preco=preco;
+	}
+	
+	public GregorianCalendar getDate () {
+		return dataRetorno;	
+	}
+
+	public void setDate(GregorianCalendar dataRetorno) {
+		this.dataRetorno=dataRetorno;
 	}
 	
 	public static String cadastrarLivro() {
