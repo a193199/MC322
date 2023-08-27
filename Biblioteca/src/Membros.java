@@ -1,11 +1,13 @@
 //consultar se tem emprestimo e quais sao
-//consultar se já atrasou
+//consultar se jï¿½ atrasou
+import java.util.Scanner;
 
 public class Membros {
 
 	private int ID;
 	private String nome;
 	private int estado;
+	Scanner sc = new Scanner(System.in);
 	
 	public Membros(int ID, String nome, int estado){
 		this.ID=ID;
@@ -35,6 +37,11 @@ public class Membros {
 
 	public void setEstado(int estado) {
 		this.estado=estado;
+	}
+	public String cadastrarMembro() {
+		System.out.println("Digite o nome do Membro: ");
+		String nomeMembro = sc.nextLine();
+		return nomeMembro;
 	}
 
 }
