@@ -5,37 +5,69 @@ import java.util.*;
 public class Main {
 	
 	public static void main(String[] args) {
+		
+		//00: Declaração de variáveis
 		int MAX = 100;
-		int qtdadeItens=11;
+		int qtdadeLivros=2;
+		int qtdadeEbook=1;
+		int qtdadeCD=1;
+		int qtdadeDVD=1;
+		int qtdadeOutros=1;
 		int qtdadeFuncionarios=5;
 		int qtdadeMembros=7;
 		int id;
+		String autor, editora,sinopse, capa, localizacao;
+		int totalCopias, totalCopiasDisp;
+		
+		//01: Inicialização de métodos
 		
 		GregorianCalendar gc=new GregorianCalendar();
 		Membros[] membros = new Membros[MAX];	
 		Funcionarios[] funcionarios = new Funcionarios[MAX];
 		ItemMultimidia[] item = new ItemMultimidia[MAX];
+		DVDdeVideo[] dvd = new DVDdeVideo[MAX];
+		Ebook[] ebook = new Ebook[MAX];
+		Livro[] livro = new Livro[MAX];
+		CDdeAudio[] cd = new CDdeAudio[MAX];
+		Outros[] outros = new Outros[MAX];
 		Relatorio relatorio = new Relatorio();
 		RenovacaoReserva renovacaoReserva = new RenovacaoReserva();
 		Emprestimo emprestimo = new Emprestimo();
 		String nomeMembro;
 		
+		//02: Início looping principal
 		try (Scanner sc = new Scanner(System.in)) {
 			gc.add(Calendar.MONTH, 0);
 			//ID - Tipo - Nome - estado - idMembro - multa - data retorno
-			item[0] = new ItemMultimidia( 1, 1,"1984", "disponivel", 0, 10, gc, qtdadeItens);
-			item[1] = new ItemMultimidia( 2, 1,"Revolucao dos Bichos", "disponivel", 0, 15, gc, qtdadeItens);
-			item[2] = new ItemMultimidia( 3, 1,"Inteligencia Artificial: Do Zero ao Metaverso", "disponivel", 0, 20, gc, qtdadeItens);
-			item[3] = new ItemMultimidia( 4, 1,"Indomavel", "disponivel", 0, 55, gc, qtdadeItens);
-			item[4] = new ItemMultimidia( 5, 1,"Primo Alemao", "disponivel", 0, 35, gc, qtdadeItens);
-			item[5] = new ItemMultimidia( 6, 1,"Blink", "disponivel", 0, 65, gc, qtdadeItens);
-			item[6] = new ItemMultimidia( 7, 1,"Antifragil", "disponivel", 0, 65, gc, qtdadeItens);
-			item[7] = new ItemMultimidia( 8, 1,"POO - Conceitos e tecnicas", "disponivel", 0, 20, gc, qtdadeItens);
-			item[8] = new ItemMultimidia( 9, 1,"Habitos atomicos", "disponivel", 0, 30, gc, qtdadeItens);
-			item[9] = new ItemMultimidia(10, 1,"Essencialismo", "disponivel", 0, 50, gc, qtdadeItens);
-			item[10]= new ItemMultimidia(11, 1,"Como fazer amigos e influenciar pessoas", "disponivel", 0, 10, gc, qtdadeItens);
-			item[11]= new ItemMultimidia(12, 1,"Quarto Escuro", "disponivel", 0, 10, gc, qtdadeItens);
 			
+			ebook[0]  = new Ebook (1,3,"1984","disponivel",0,0,gc,1,"George Orwell", 
+								  "Nova",gc,"","****1984****", 10,10,"online","PDF","www.bit.ly/1984", 
+								  "leitor pdf",gc);
+			
+			livro[0]  = new Livro (1,1,"Antifrágil","disponivel",0,0,gc,1,"Nassim Nicholas Taleb", 
+								  "Objetiva",gc,"","****ANTIFRAGIL****", 10,10,	"1C4P",1,4);
+			
+			livro[1]  = new Livro (2,1,"Sapiens - Edição em quadrinhos","disponivel",0,0,gc,1,"YUVAL NOAH HARARI", 
+					  "Quadrinhos na Cia",gc,"","****SAPIENS****", 10,10,	"1C3P",1,3);
+			
+//			String lista []={"Speak to Me / Breathe", "Eclipse", "Brain Damage", "Time","The Great Gig in the Sky",
+//					"Money","Us and Them","Any Colour You Like","On the Run"};
+			
+			cd[0] 	  = new CDdeAudio(1,2,"The Dark Side of the Moon","disponivel",0,0,gc,1,"Pink Floyd", 
+									 "Capitol",gc,"","****The Dark Side of the Moon****", 10,10,"online",
+									 "\n1:Speak to Me / Breathe \n2:Eclipse \n3:Brain Damage \n4:Time \n5:The Great Gig in the Sky \n6:Money \n7:Us and Them \n8:Any Colour You Like \n9:On the Run" 
+									 ,2550);
+			
+			dvd[0]    = new DVDdeVideo(1,4,"A Ilha do Medo","disponivel",0,0,gc,1,"Dennis Lehane", 
+									  "Warner Bros",gc,
+									  "\n\nNos anos 1950, a fuga de uma assassina leva o detetive Teddy Daniels e seu parceiro a \ninvestigarem o seu desaparecimento de um quarto trancado em um hospital psiquiátrico. \nLá, uma rebelião se inicia e o agente terá que enfrentar seus próprios medos.",
+									  "****A Origem****", 10,10,"online",
+									  "\n1:Leonardo DiCaprio \n2:Mark Ruffalo \n3:Ben Kingsley \n4:Michelle Williams",
+									  138,
+									  "disponivel");
+			
+			outros[0] = new Outros(1,5,"Mario Kart 8 Deluxe","disponivel",0,0,gc,1,"Nintendo Switch", 
+								   "null",gc,"","****Mario Kart****", 10,10,"online","Jogo","Online");
 			
 			//Cadastrando Funcionarios
 			funcionarios[0] = new Funcionarios(1,"Estagiaria","Maria Madalena",1000);
@@ -45,15 +77,11 @@ public class Main {
 			funcionarios[4] = new Funcionarios(5,"TI","Marcos Rodrigues",500);
 			
 			//Cadastrando Membros
-			//ID - Nome - Estado
-			membros[0] = new Membros(1,"Joao Figueiredo",0);
-			membros[1] = new Membros(2,"Carlos Macedo",0);
-			membros[2] = new Membros(3,"Ana Pieri",0);
-			membros[3] = new Membros(4,"Luiza Malatesta",0);
-			membros[4] = new Membros(5,"Igor Brasileiro",0);
-			membros[5] = new Membros(6,"Joao Goes",0);
-			membros[6] = new Membros(7,"Pedro Paulo",0);
-			
+//Membros(int ID, String nome, int estado, String nomeInstituicao, String endereco,
+//GregorianCalendar dataRegistro, int tipo)
+			membros[0] = new Membros(1,"Joao Figueiredo",0,"UNICAMP","Rua Girassol, 182 - SP",gc,0);
+			membros[1] = new Membros(2,"Carlos Macedo",0,"USP","Rua A, 34 - SP",gc,0);
+			membros[2] = new Membros(3,"Ana Pieri",0,"UNESP","Rua Matutas, 100 - SP",gc,0);
 			
 			getMenu();
 			System.out.println("Digite um comando:");
@@ -65,9 +93,17 @@ public class Main {
 				switch (comando) {
 				
 				case 1:
-					System.out.println("------------------1 - Lista de Livros: ------------------");
+					System.out.println("------------------1 - Lista de Livros: -------------------");
 				// Imprimir lista de livros
-					emprestimo.listaDeItens(item, qtdadeItens);
+					Livro.listaDeItens(livro, qtdadeLivros);
+					System.out.println("------------------1 - Lista de e-books: ------------------");
+					Ebook.listaDeItens(ebook, qtdadeEbook);
+					System.out.println("------------------1 - Lista de CDs: ------------------");
+					CDdeAudio.listaDeItens(cd, qtdadeCD);
+					System.out.println("------------------1 - Lista de DVDs: ------------------");
+					DVDdeVideo.listaDeItens(dvd, qtdadeDVD);
+					System.out.println("------------------1 - Lista de Outros: ------------------");
+					Outros.listaDeItens(outros, qtdadeOutros);
 					msg();
 					comando = sc.nextInt();
 				break;
@@ -83,16 +119,86 @@ public class Main {
 				   System.out.println("-----------------------3 - Cadastrar Livros: --------------------------");	
 					// Cadastrar um novo livro	
 			       
-					String nomeItem = item[qtdadeItens-1].cadastrarItem();
-					System.out.println("Digite o tipo de item (1- livro | 2-CD | 3-e-book):");
+				    opcoes();
 					int tipoItem = sc.nextInt();
+					
+				    System.out.println("Digite o nome do item:");
+					String nomeItem = livro[0].cadastrarItem();
+					
 					System.out.println("Digite o valor da multa em reais:");
 					int multa=sc.nextInt();
 					
-					qtdadeItens=qtdadeItens+1;
-					item[qtdadeItens] = new ItemMultimidia(qtdadeItens, tipoItem, nomeItem, "disponivel", 0, multa, gc, qtdadeItens);
+					System.out.println("Digite o nome do autor/compositor:");
+					autor=livro[0].cadastrarItem();
+					
+					System.out.println("Digite o nome da editora/gravadora:");
+					editora=livro[0].cadastrarItem();
+					
+					System.out.println("Digite a capa representativa:");
+					capa=livro[0].cadastrarItem();
+					
+					System.out.println("Digite o total de copias:");
+					totalCopias=sc.nextInt();
+					
+					System.out.println("Digite a localização:");
+					localizacao=livro[0].cadastrarItem();
+					
+					System.out.print("Digite o ano de publicacao: ");
+			        int ano = sc.nextInt();
+			        
+			        System.out.print("Digite o mês (1-12) de publicacao: ");
+			        int mes = sc.nextInt();
+			        GregorianCalendar anoPublicacao = new GregorianCalendar(ano, mes - 1, 1);
+			        
+			        
+			        if(tipoItem == 1) {
+			        	System.out.println("Digite a edicao do livro:");
+			        	int edicao=sc.nextInt();
+			        	System.out.println("Digite o ISBN:");
+			        	int isbn=sc.nextInt();
+			        	qtdadeLivros=qtdadeLivros+1;
+						livro[qtdadeLivros-1] = new Livro (qtdadeLivros,1,nomeItem,"disponivel",0,0,gc,1,autor, 
+													    editora,anoPublicacao,"",capa, 10,10,localizacao,edicao,isbn);
+			        }else if (tipoItem == 2) {
+			        	System.out.println("Digite a url:");
+						String url =livro[0].cadastrarItem();
+						
+			        	qtdadeEbook=qtdadeEbook+1;
+						ebook[qtdadeEbook-1] = new Ebook (1,1,nomeItem,"disponivel",0,0,gc,1,autor, 
+													    editora,anoPublicacao,"",capa, 10,10,localizacao,"online","PDF",url, 
+														  gc);
+			        }else if (tipoItem == 3) {
+			        	System.out.println("Digite a duracao em segundos:");
+			        	int duracao=sc.nextInt();
+			        	qtdadeCD=qtdadeCD+1;
+						cd[qtdadeCD-1] = new CDdeAudio (1,1,nomeItem,"disponivel",0,0,gc,1,autor, 
+													   editora,anoPublicacao,"",capa, 10,10,"online","",duracao);
+			        }else if (tipoItem == 4) {
+			        	
+			        	System.out.println("Digite uma breve sinopse:");
+						sinopse=livro[0].cadastrarItem();
+						
+						System.out.println("Digite a duracao em minutos:");
+			        	int duracao=sc.nextInt();
+			        	
+						qtdadeDVD=qtdadeDVD+1;
+						dvd[qtdadeDVD-1] = new DVDdeVideo (1,1,nomeItem,"disponivel",0,0,gc,1,autor, 
+													    editora,anoPublicacao,sinopse,capa, 10,10,"online","",duracao,"disponivel");
+						
+			        }else if(tipoItem == 5) {
+			        	System.out.println("Digite o tipo de recurso:");
+						String recurso=livro[0].cadastrarItem();
+						System.out.println("Digite o formato:");
+						String formato=livro[0].cadastrarItem();
+			        	qtdadeOutros=qtdadeOutros+1;
+						outros[qtdadeOutros-1] = new Outros (1,1,nomeItem,"disponivel",0,0,gc,1,autor, 
+													    editora,anoPublicacao,"",capa, 10,10,"online",recurso,formato);
+			        } else {
+			        	System.out.println("Opção Inválida");
+			        }
+					
 					System.out.println("Item cadastrado com sucesso!");
-					System.out.println("Nome: "+item[qtdadeItens].getNome() + " | ID: " + item[qtdadeItens].getIDItem());
+					//System.out.println("Nome: "+livro[qtdadeItens].getTitulo() + " | ID: " + livro[qtdadeItens].getIDItem());
 					   
 				   msg();
 				   comando = sc.nextInt();
@@ -107,15 +213,29 @@ public class Main {
 					   
 					   nomeMembro=membros[qtdadeMembros-1].cadastrarMembro();
 					   qtdadeMembros++;
-					   membros[qtdadeMembros] = new Membros(qtdadeMembros, nomeMembro, 0);
+					   membros[qtdadeMembros] = new Membros(qtdadeMembros, nomeMembro, 0, "", "", null, 0);
 					   System.out.println("Membro cadastrado com sucesso!");
 					   System.out.println("Nome: "+membros[qtdadeMembros].getNome() + "| ID: " + membros[qtdadeMembros].getID());
 					   
-					   emprestimo.emprestarItem(item, qtdadeItens);
-					   
-					} else if(resposta == 1) {
-				   emprestimo.emprestarItem(item, qtdadeItens);
-				}
+					} 
+				   
+				   opcoes();
+				   tipoItem = sc.nextInt();
+				   
+				   if(tipoItem == 1) {
+					   emprestimo.emprestarItem(livro, qtdadeLivros);
+			       }else if (tipoItem == 2) {
+			           emprestimo.emprestarItem(ebook, qtdadeEbook);
+			       }else if (tipoItem == 3) {
+			    	   emprestimo.emprestarItem(cd, qtdadeCD);
+			       }else if (tipoItem == 4) {
+			    	   emprestimo.emprestarItem(dvd, qtdadeDVD);
+			       }else if(tipoItem == 5) {	
+			    	   emprestimo.emprestarItem(outros, qtdadeOutros);
+			       } else {
+			        	System.out.println("Opção Inválida");
+			       }
+
 			       msg();
 				   comando = sc.nextInt();
 				break;
@@ -125,7 +245,7 @@ public class Main {
 				   System.out.println("Digite o ID do livro desejado.");
 				   id = sc.nextInt();
 					// Realizar uma reserva
-				   renovacaoReserva.alterarEstado(membros[0], item[id]);
+				   renovacaoReserva.alterarEstado(membros[0], livro[id]);
 				   msg();
 				   comando = sc.nextInt();
 				break;
@@ -134,7 +254,24 @@ public class Main {
 
 				// Realizar devolucao
 				   System.out.println("-----------------------6 - Devolucao de Livros: ------------------------");
-				   emprestimo.devolverItem(item, qtdadeItens);
+				   
+				   opcoes();
+				   tipoItem = sc.nextInt();
+				   
+				   if(tipoItem == 1) {
+					   emprestimo.devolverItem(livro, qtdadeLivros);
+			       }else if (tipoItem == 2) {
+			    	   emprestimo.devolverItem(ebook, qtdadeEbook);
+			       }else if (tipoItem == 3) {
+			    	   emprestimo.devolverItem(cd, qtdadeCD);
+			       }else if (tipoItem == 4) {
+			    	   emprestimo.devolverItem(dvd, qtdadeDVD);
+			       }else if(tipoItem == 5) {	
+			    	   emprestimo.devolverItem(outros, qtdadeOutros);
+			       } else {
+			        	System.out.println("Opção Inválida");
+			       }
+				   
 				   msg();
 				   comando = sc.nextInt();
 				break;
@@ -142,7 +279,24 @@ public class Main {
 				case 7:
 					//aqui sera executada a compra de livros
 				   System.out.println("-------------------------7 - Adicionar multa: --------------------------");
-				   emprestimo.adicionarMulta(item, qtdadeItens);			   
+				   
+				   opcoes();
+				   tipoItem = sc.nextInt();
+				   
+				   if(tipoItem == 1) {
+					   emprestimo.adicionarMulta(livro, qtdadeLivros);
+			       }else if (tipoItem == 2) {
+			    	   emprestimo.adicionarMulta(ebook, qtdadeEbook);
+			       }else if (tipoItem == 3) {
+			    	   emprestimo.adicionarMulta(cd, qtdadeCD);
+			       }else if (tipoItem == 4) {
+			    	   emprestimo.adicionarMulta(dvd, qtdadeDVD);
+			       }else if(tipoItem == 5) {	
+			    	   emprestimo.adicionarMulta(outros, qtdadeOutros);
+			       } else {
+			        	System.out.println("Opção Inválida");
+			       }
+			   
 				   msg();
 				   comando = sc.nextInt();
 					
@@ -150,7 +304,29 @@ public class Main {
 				
 				case 8:
 				   System.out.println("--------------------8 - Estatisticas da Biblioteca: --------------------");
-				   relatorio.relatorioTotal(item, qtdadeItens);
+				   opcoes();
+				   
+				   tipoItem = sc.nextInt();
+				   
+				   if(tipoItem == 1) {
+					   System.out.println("X X X X X X X X X LIVRO X X X X X X X X X");
+					   relatorio.relatorioTotal(livro, qtdadeLivros);
+			       }else if (tipoItem == 2) {
+			    	   System.out.println("X X X X X X X X X EBOOK X X X X X X X X X");
+			    	   relatorio.relatorioTotal(ebook, qtdadeEbook);
+			       }else if (tipoItem == 3) {
+			    	   System.out.println("X X X X X X X X X CD X X X X X X X X X");
+			    	   relatorio.relatorioTotal(cd, qtdadeCD);
+			       }else if (tipoItem == 4) {
+			    	   System.out.println("X X X X X X X X X DVD X X X X X X X X X");
+			    	   relatorio.relatorioTotal(dvd, qtdadeDVD);
+			       }else if(tipoItem == 5) {	
+			    	   System.out.println("X X X X X X X X X OUTROS X X X X X X X X X");
+			    	   relatorio.relatorioTotal(outros, qtdadeOutros);
+			       } else {
+			        	System.out.println("Opção Inválida");
+			       }
+				   
 				   msg();
 				   comando = sc.nextInt();
 					
@@ -158,7 +334,23 @@ public class Main {
 				
 				case 9:
 				   System.out.println("--------------------9 - Relatorio de emprestimo: --------------------");
-				   emprestimo.relatorioEmprestimo(item);
+				   
+				   opcoes();
+				   tipoItem = sc.nextInt();
+				   if(tipoItem == 1) {
+					   emprestimo.relatorioEmprestimo(livro);
+			       }else if (tipoItem == 2) {
+			    	   emprestimo.relatorioEmprestimo(ebook);
+			       }else if (tipoItem == 3) {
+			    	   emprestimo.relatorioEmprestimo(cd);
+			       }else if (tipoItem == 4) {
+			    	   emprestimo.relatorioEmprestimo(dvd);
+			       }else if(tipoItem == 5) {	
+			    	   emprestimo.relatorioEmprestimo(outros);
+			       } else {
+			        	System.out.println("Opção Inválida");
+			       }
+
 				   msg();
 				   comando = sc.nextInt();
 						
@@ -193,13 +385,13 @@ public class Main {
 
 	public static void getMenu() {
 		System.out.println("---------------------MENU--------------------");
-		System.out.println("  1: Lista de livros");
+		System.out.println("  1: Lista de itens");
 		System.out.println("  2: Consultar um funcionario");
-		System.out.println("  3: Cadastrar um novo livro");
+		System.out.println("  3: Cadastrar um novo item");
 		System.out.println("  4: Realizar um emprestimo");	
 		System.out.println("  5: Realizar uma reserva ou renovação");	
-		System.out.println("  6: Devolver um livro");	
-		System.out.println("  7: Retirar livro do sistema");
+		System.out.println("  6: Adicionar multa");	
+		System.out.println("  7: Retirar item do sistema");
 		System.out.println("  8: Relatórios Estatístico");
 		System.out.println("  9: Relatórios de Itens");
 		System.out.println(" 10: Abrir menu");
@@ -210,6 +402,9 @@ public class Main {
 	public static void msg() {
 		System.out.println("Em caso de duvida, digite 10 para abrir o menu.");	
 	}
-
-
+	
+	public static void opcoes() {
+		System.out.println("Digite: \n1 Para livros \n2 Para e-book \n3 Para CDs \n4 Para DVDs \n5 Para outros");	
+	}
+	
 }
