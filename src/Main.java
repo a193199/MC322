@@ -1,6 +1,13 @@
 //import java.io.IOException;
 import java.util.*;
 
+import biblioteca.CDdeAudio;
+import biblioteca.DVDdeVideo;
+import biblioteca.Ebook;
+import biblioteca.ItemMultimidia;
+import biblioteca.Livro;
+import biblioteca.Outros;
+
 
 public class Main {
 	

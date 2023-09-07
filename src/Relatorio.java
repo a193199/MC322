@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+import biblioteca.ItemMultimidia;
+
 public class Relatorio {
 	
 //esta classe constitui os relatorios da biblioteca desde estatísticas de uso até relatórios financeiros de multas

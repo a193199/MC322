@@ -1,6 +1,8 @@
 import java.util.GregorianCalendar;
 import java.util.Scanner;
 
+import biblioteca.ItemMultimidia;
+
 public class Emprestimo {
 //devolve relatorio de emprestimo
 	Scanner sc = new Scanner(System.in);

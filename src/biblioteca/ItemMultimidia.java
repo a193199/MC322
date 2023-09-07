@@ -1,3 +1,4 @@
+package biblioteca;
 import java.util.*;
 
 //classe para consultar os itens genéricos da biblioteca
