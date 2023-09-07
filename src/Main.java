@@ -1,6 +1,18 @@
 //import java.io.IOException;
 import java.util.*;
 
+import biblioteca.CDdeAudio;
+import biblioteca.DVDdeVideo;
+import biblioteca.Ebook;
+import biblioteca.ItemMultimidia;
+import biblioteca.Livro;
+import biblioteca.Outros;
+import funcionalidades.Emprestimo;
+import funcionalidades.Relatorio;
+import funcionalidades.RenovacaoReserva;
+import pessoa.Funcionarios;
+import pessoa.Membros;
+
 
 public class Main {
 	
@@ -257,17 +269,18 @@ public class Main {
 				   
 				   opcoes();
 				   tipoItem = sc.nextInt();
-				   
+				   System.out.println("Digite o ID do membro:");
+				   id = sc.nextInt();
 				   if(tipoItem == 1) {
-					   emprestimo.devolverItem(livro, qtdadeLivros);
+					   emprestimo.devolverItem(membros[id],livro, qtdadeLivros);
 			       }else if (tipoItem == 2) {
-			    	   emprestimo.devolverItem(ebook, qtdadeEbook);
+			    	   emprestimo.devolverItem(membros[id],ebook, qtdadeEbook);
 			       }else if (tipoItem == 3) {
-			    	   emprestimo.devolverItem(cd, qtdadeCD);
+			    	   emprestimo.devolverItem(membros[id],cd, qtdadeCD);
 			       }else if (tipoItem == 4) {
-			    	   emprestimo.devolverItem(dvd, qtdadeDVD);
+			    	   emprestimo.devolverItem(membros[id],dvd, qtdadeDVD);
 			       }else if(tipoItem == 5) {	
-			    	   emprestimo.devolverItem(outros, qtdadeOutros);
+			    	   emprestimo.devolverItem(membros[id],outros, qtdadeOutros);
 			       } else {
 			        	System.out.println("Opção Inválida");
 			       }
@@ -284,15 +297,15 @@ public class Main {
 				   tipoItem = sc.nextInt();
 				   
 				   if(tipoItem == 1) {
-					   emprestimo.adicionarMulta(livro, qtdadeLivros);
+					   
 			       }else if (tipoItem == 2) {
-			    	   emprestimo.adicionarMulta(ebook, qtdadeEbook);
+			    	   
 			       }else if (tipoItem == 3) {
-			    	   emprestimo.adicionarMulta(cd, qtdadeCD);
+			    	  
 			       }else if (tipoItem == 4) {
-			    	   emprestimo.adicionarMulta(dvd, qtdadeDVD);
+			    	   
 			       }else if(tipoItem == 5) {	
-			    	   emprestimo.adicionarMulta(outros, qtdadeOutros);
+			    	   
 			       } else {
 			        	System.out.println("Opção Inválida");
 			       }

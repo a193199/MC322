@@ -1,6 +1,7 @@
 //consultar cargo
 //consultar faltas
-//consultar salário
+//consultar salï¿½rio
+package pessoa;
 
 public class Funcionarios {
 	
