@@ -7,11 +7,6 @@ import biblioteca.Ebook;
 import biblioteca.ItemMultimidia;
 import biblioteca.Livro;
 import biblioteca.Outros;
-import funcionalidades.Emprestimo;
-import funcionalidades.Relatorio;
-import funcionalidades.RenovacaoReserva;
-import pessoa.Funcionarios;
-import pessoa.Membros;
 
 
 public class Main {
@@ -269,18 +264,17 @@ public class Main {
 				   
 				   opcoes();
 				   tipoItem = sc.nextInt();
-				   System.out.println("Digite o ID do membro:");
-				   id = sc.nextInt();
+				   
 				   if(tipoItem == 1) {
-					   emprestimo.devolverItem(membros[id],livro, qtdadeLivros);
+					   emprestimo.devolverItem(livro, qtdadeLivros);
 			       }else if (tipoItem == 2) {
-			    	   emprestimo.devolverItem(membros[id],ebook, qtdadeEbook);
+			    	   emprestimo.devolverItem(ebook, qtdadeEbook);
 			       }else if (tipoItem == 3) {
-			    	   emprestimo.devolverItem(membros[id],cd, qtdadeCD);
+			    	   emprestimo.devolverItem(cd, qtdadeCD);
 			       }else if (tipoItem == 4) {
-			    	   emprestimo.devolverItem(membros[id],dvd, qtdadeDVD);
+			    	   emprestimo.devolverItem(dvd, qtdadeDVD);
 			       }else if(tipoItem == 5) {	
-			    	   emprestimo.devolverItem(membros[id],outros, qtdadeOutros);
+			    	   emprestimo.devolverItem(outros, qtdadeOutros);
 			       } else {
 			        	System.out.println("Opção Inválida");
 			       }
@@ -297,15 +291,15 @@ public class Main {
 				   tipoItem = sc.nextInt();
 				   
 				   if(tipoItem == 1) {
-					   
+					   emprestimo.adicionarMulta(livro, qtdadeLivros);
 			       }else if (tipoItem == 2) {
-			    	   
+			    	   emprestimo.adicionarMulta(ebook, qtdadeEbook);
 			       }else if (tipoItem == 3) {
-			    	  
+			    	   emprestimo.adicionarMulta(cd, qtdadeCD);
 			       }else if (tipoItem == 4) {
-			    	   
+			    	   emprestimo.adicionarMulta(dvd, qtdadeDVD);
 			       }else if(tipoItem == 5) {	
-			    	   
+			    	   emprestimo.adicionarMulta(outros, qtdadeOutros);
 			       } else {
 			        	System.out.println("Opção Inválida");
 			       }

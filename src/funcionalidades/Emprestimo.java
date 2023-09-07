@@ -1,9 +1,7 @@
-package funcionalidades;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
 
 import biblioteca.ItemMultimidia;
-import pessoa.Membros;
 
 public class Emprestimo {
 //devolve relatorio de emprestimo
@@ -47,41 +45,29 @@ public class Emprestimo {
 		}
 	  
 	}
-	public void devolverItem(Membros membro, ItemMultimidia [] item, int qtdadeLivros) {
+	public void devolverItem(ItemMultimidia [] item, int qtdadeLivros) {
 		System.out.println("Digite o ID do item desejado.");
 		int id = sc.nextInt();
-		
-		      if (item[id].getEstado() == "emprestado") {
-		    	  item[id].setEstado("disponivel");
-				  System.out.println("Item devolvido com sucesso!");
-		}else if(item[id].getEstado() == "atrasado") {
-			      if(membro.getTipo() == 1) {
-				  //Professor
-			    	  item[id].setMulta(0.5);
-			}else if(membro.getTipo()== 2 | membro.getTipo()==3) {
-				 //Estudante de graduação ou pós
-					  item[id].setMulta(1);
-			}else if(membro.getTipo()== 4) {
-				//Funcionários
-					  item[id].setMulta(0.75);
-			}
-			
-		}else {
+
+		if (item[id].getEstado() == "emprestado") {
+			   item[id].setEstado("disponivel");
+				System.out.println("Item devolvido com sucesso!");
+		} else {
 				System.out.println("Nao ha emprestimo relacionado a esse item.");
 		}
 			
 	}
-//	public void adicionarMulta(ItemMultimidia [] item, int qtdadeLivros) {
-//		System.out.println("Digite o ID do item desejado.");
-//		int id = sc.nextInt();
-//        if(item[id].getEstado() == "emprestado") {
-//		    System.out.println("Digite o valor da multa.");
-//		    int multa = sc.nextInt();
-//		    item[id].setMulta(multa);
-//		    System.out.println("Multa cadastrada.");
-//		}else {
-//			   System.out.println("Impossível realizar está operação");
-//		}
-//	}
+	public void adicionarMulta(ItemMultimidia [] item, int qtdadeLivros) {
+		System.out.println("Digite o ID do item desejado.");
+		int id = sc.nextInt();
+        if(item[id].getEstado() == "emprestado") {
+		    System.out.println("Digite o valor da multa.");
+		    int multa = sc.nextInt();
+		    item[id].setMulta(multa);
+		    System.out.println("Multa cadastrada.");
+		}else {
+			   System.out.println("Impossível realizar está operação");
+		}
+	}
 	
 }
