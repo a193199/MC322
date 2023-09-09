@@ -1,5 +1,9 @@
+package funcionalidades;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
+
+import biblioteca.ItemMultimidia;
+import pessoa.Membros;
 
 //classe responsável por executar as funções de renovação e reserva de um item multimidia
 //altera o estado do item para 'emprestimo' ou 'reserva'

@@ -1,5 +1,7 @@
 //consultar se tem emprestimo e quais sao
 //consultar se j� atrasou
+package pessoa;
+
 import java.util.GregorianCalendar;
 import java.util.Scanner;
 
@@ -12,6 +14,7 @@ public class Membros {
 	private GregorianCalendar dataRegistro;
 	private int estado;
 	private int tipo;
+	private int limite;
 	
 	Scanner sc = new Scanner(System.in);
 	
@@ -80,7 +83,14 @@ public class Membros {
 	public void setDataRegistro(GregorianCalendar dataRegistro) {
 		this.dataRegistro=dataRegistro;
 	}
-	
+
+	public int getLimite() {
+		return limite;
+	}
+
+	public void setLimite(int limite) {
+		this.limite = limite;
+	}
 	public String cadastrarMembro() {
 		System.out.println("Digite o nome do Membro: ");
 		String nomeMembro = sc.nextLine();

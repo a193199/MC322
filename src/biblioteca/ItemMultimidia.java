@@ -1,3 +1,4 @@
+package biblioteca;
 import java.util.*;
 
 //classe para consultar os itens genéricos da biblioteca
@@ -22,7 +23,7 @@ public class ItemMultimidia {
 	private String estado;			//estado de conservação
 	
 	//gerenciamento de item
-	private int multa;
+	private double multa;
 	private GregorianCalendar dataRetorno;
 	private int qtdadeItens;
 	private int tipo;
@@ -97,12 +98,12 @@ public class ItemMultimidia {
 		this.estado=estado;
 	}
 	
-	public int getMulta () {
+	public double getMulta () {
 		return multa;	
 	}
 
-	public void setMulta(int multa) {
-		this.multa=multa;
+	public void setMulta(double d) {
+		this.multa=d;
 	}
 	
 	public GregorianCalendar getDate () {
