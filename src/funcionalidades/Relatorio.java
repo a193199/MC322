@@ -1,8 +1,6 @@
-package funcionalidades;
 import java.util.Scanner;
 
 import biblioteca.ItemMultimidia;
-import pessoa.Funcionarios;
 
 public class Relatorio {
 	
@@ -35,12 +33,12 @@ public class Relatorio {
 			}else if (item[i].getEstado() == "reservado")  {
 				tempReserv++;
 			}
-			 
+			 multa =+ item[i].getMulta();
 		  }
 		  System.out.println("Quantidade de Itens Disponíveis: " + tempDisp);
 		  System.out.println("Quantidade de Itens Emprestados: " + tempEmp);
 		  System.out.println("Quantidade de Itens Reservados: " + tempReserv);
-		  
+		  System.out.println("Valor de Multas a receber: " + multa);
 		   
 		}
 	
