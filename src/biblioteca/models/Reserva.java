@@ -1,5 +1,5 @@
 package biblioteca.models;
 
-public class Reserva {
+public interface Reserva {
 
 }
