@@ -1,5 +1,7 @@
 package biblioteca.models;
 
-public class Emprestimo {
+public interface Emprestimo {
+
+	String getStatus();
 
 }

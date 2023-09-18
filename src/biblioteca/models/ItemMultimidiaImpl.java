@@ -14,4 +14,10 @@ public class ItemMultimidiaImpl implements ItemMultimidia {
 		return null;
 	}
 
+	@Override
+	public String getStatus() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

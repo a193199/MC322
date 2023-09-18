@@ -36,7 +36,6 @@ public class BibliotecaControllerImpl implements BibliotecaController {
 
 	@Override
 	public boolean emprestarItem(Membro membro, ItemMultimidia item) {
-		// Lógica de empréstimo
 		return true;
 	}
 
@@ -55,7 +54,12 @@ public class BibliotecaControllerImpl implements BibliotecaController {
 
 	@Override
 	public Set<Emprestimo> adiconaEmprestimo(Emprestimo item) {
-		this.emprestimo.add(item);
+		if (item.getStatus() == "disponivel") {
+			this.emprestimo.add(item);
+		} else {
+			this.reserva.add((Reserva) item);
+		}
+
 		return emprestimo;
 	}
 
@@ -70,6 +74,5 @@ public class BibliotecaControllerImpl implements BibliotecaController {
 		// TODO Auto-generated method stub
 		return categoria;
 	}
-
 
 }

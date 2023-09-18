@@ -15,6 +15,11 @@ public class CDdeAudio implements ItemMultimidia {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Override
+	public String getStatus() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 
 }
