@@ -10,6 +10,7 @@ import biblioteca.models.ItemMultimidia;
 import biblioteca.models.Membro;
 import biblioteca.models.Reserva;
 
+
 public interface BibliotecaController {
     List<ItemMultimidia> consultarItensDisponiveis();
     List<Reserva> adiconarReserva(Reserva reserva);

@@ -1,6 +1,6 @@
 package biblioteca.models;
 
-public class ReservaImpl {
+public class ReservaImpl implements Reserva {
 
 	private int idMembro;
 
