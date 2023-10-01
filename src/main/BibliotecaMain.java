@@ -1,6 +1,9 @@
 package main;
 
 import biblioteca.controllers.*;
+import biblioteca.exception.HIstoricoMultaException;
+import biblioteca.exception.ItemIndisponivelException;
+import biblioteca.exception.LimiteExcedidoException;
 import biblioteca.models.*;
 import biblioteca.views.*;
 
@@ -251,8 +254,15 @@ public class BibliotecaMain {
 
 	// Métodos para realizar empréstimo, renovação e reserva
 	private static void realizarEmprestimo(Scanner scanner) {
-        System.out.println("Operação de Empréstimo de Itens");
-    }
+		try{bibliotecaController.emprestarItem(null, null);
+
+		}catch(LimiteExcedidoException e){
+			System.out.println(e.getMessage());
+		}catch(HIstoricoMultaException e) {
+			System.out.println(e.getMessage());
+		}
+		System.out.println("Operação de Empréstimo de Itens");
+	}
 
 	private static void realizarRenovacao(Scanner scanner) {
 		// Lógica para realizar uma renovação de empréstimo
@@ -267,6 +277,13 @@ public class BibliotecaMain {
 	// Métodos para adicionar, editar e remover itens e membros
 	private static void adicionarItem(Scanner scanner) {
 		// Lógica para adicionar um novo item
+		System.out.println("Digite o nome do itme");
+		String nome = scanner.nextLine();
+
+		System.out.println("Digite o ID do item");
+		int id = scanner.nextInt();
+
+		bibliotecaController.adicionarItem(nome, id);
 		System.out.println("Operação de Adição de Item");
 	}
 

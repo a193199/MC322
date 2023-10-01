@@ -28,4 +28,5 @@ public interface BibliotecaController {
 	Set<Categoria> retornaCategoria();
 	void consultarItem(ItemMultimidia item);
 	List<Reserva> adiconarReservaSala(ReservaSala item) throws ItemIndisponivelException;
+	void adicionarItem(String nome, int id);
 }

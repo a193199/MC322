@@ -16,9 +16,11 @@ import biblioteca.exception.LimiteExcedidoException;
 import biblioteca.models.Categoria;
 import biblioteca.models.Emprestimo;
 import biblioteca.models.ItemMultimidia;
+import biblioteca.models.ItemMultimidiaImpl;
 import biblioteca.models.Membro;
 import biblioteca.models.Reserva;
 import biblioteca.models.ReservaSala;
+
 
 public class BibliotecaControllerImpl implements BibliotecaController {
 
@@ -36,6 +38,11 @@ public class BibliotecaControllerImpl implements BibliotecaController {
 		categoria = new HashSet<>();
 	}
 
+	public void adicionarItem(String nome, int id) {
+		ItemMultimidia item = new ItemMultimidiaImpl(nome, id);
+		itens.add(item);
+	}
+	
 	@Override
 	public List<ItemMultimidia> consultarItensDisponiveis() {
 		return itens;
