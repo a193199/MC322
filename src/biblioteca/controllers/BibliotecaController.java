@@ -7,6 +7,7 @@ import java.util.Set;
 import biblioteca.exception.HIstoricoMultaException;
 import biblioteca.exception.ItemDanificadoException;
 import biblioteca.exception.ItemIndisponivelException;
+import biblioteca.exception.ItemJaCadastradoException;
 import biblioteca.exception.ItemNaoRelacionadoException;
 import biblioteca.exception.LimiteExcedidoException;
 import biblioteca.models.Categoria;
@@ -22,7 +23,7 @@ public interface BibliotecaController {
     List<Reserva> adiconarReserva(Reserva reserva) throws ItemIndisponivelException, LimiteExcedidoException;
     boolean emprestarItem(Membro membro, ItemMultimidia item) throws LimiteExcedidoException, HIstoricoMultaException;
     boolean devolverItem(Membro membro, ItemMultimidia item) throws ItemNaoRelacionadoException, ItemDanificadoException;
-	Map<Integer, ItemMultimidia> adicionarAoMap(int id, ItemMultimidia item);
+	Map<Integer, ItemMultimidia> adicionarAoMap(int id, ItemMultimidia item) throws ItemJaCadastradoException;
 	Set<Emprestimo> adiconaEmprestimo(Emprestimo emp) throws ItemIndisponivelException;
 	Set<Categoria> retornaCategoria();
 	void consultarItem(ItemMultimidia item);

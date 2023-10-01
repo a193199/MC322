@@ -10,6 +10,7 @@ import java.util.Set;
 import biblioteca.exception.HIstoricoMultaException;
 import biblioteca.exception.ItemDanificadoException;
 import biblioteca.exception.ItemIndisponivelException;
+import biblioteca.exception.ItemJaCadastradoException;
 import biblioteca.exception.ItemNaoRelacionadoException;
 import biblioteca.exception.LimiteExcedidoException;
 import biblioteca.models.Categoria;
@@ -63,7 +64,10 @@ public class BibliotecaControllerImpl implements BibliotecaController {
 	}
 
 	@Override
-	public Map<Integer, ItemMultimidia> adicionarAoMap(int id, ItemMultimidia item) {
+	public Map<Integer, ItemMultimidia> adicionarAoMap(int id, ItemMultimidia item) throws ItemJaCadastradoException {
+		if (mapa.get(item) != null) {
+			throw new ItemJaCadastradoException("Item já cadastrado ao banco de dados");
+		}
 		this.mapa.put(id, item);
 		return mapa;
 
@@ -82,18 +86,11 @@ public class BibliotecaControllerImpl implements BibliotecaController {
 	}
 
 	@Override
-	public List<Reserva> adiconarReserva(Reserva item) throws ItemIndisponivelException {
-		if(item.getStatus() != "disponivel") {
+	public List<Reserva> adiconarReserva(Reserva item) throws ItemIndisponivelException, LimiteExcedidoException {
+		if (item.getStatus() != "disponivel") {
 			throw new ItemIndisponivelException("Este item não está disponível, adicionamos a reserva.");
-		}
-		this.reserva.add(item);
-		return reserva;
-	}
-	
-	@Override
-	public List<Reserva> adiconarReservaSala(ReservaSala item) throws ItemIndisponivelException {
-		if(item.getStatus() != "disponivel") {
-			throw new ItemIndisponivelException("Este item não está disponível, adicionamos a reserva.");
+		} else if (item.getQtdadePessoas() == item.getLimite()) {
+			throw new LimiteExcedidoException("Limite de emprestimos excedido");
 		}
 		this.reserva.add(item);
 		return reserva;
@@ -113,6 +110,12 @@ public class BibliotecaControllerImpl implements BibliotecaController {
 			// lógica de item disponivel
 		}
 
+	}
+
+	@Override
+	public List<Reserva> adiconarReservaSala(ReservaSala item) throws ItemIndisponivelException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
