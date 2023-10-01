@@ -6,13 +6,13 @@ import java.util.List;
 public class MembroImpl implements Membro {
 	public String nome;
 	public String id;
-	
 	List<Emprestimo> historico = new ArrayList<>();
 	
-	public MembroImpl(String nome, String id) {
+	public MembroImpl(String nome, String id, List<Emprestimo>  historico) {
 		super();
 		this.nome = nome;
 		this.id = id;
+		this.historico=historico;		
 	}
 
 	@Override
@@ -43,6 +43,18 @@ public class MembroImpl implements Membro {
 	public double getMultaAtraso() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public int getQtdadeEmprestimo() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	@Override
+	public List<Emprestimo> getHistorico(String titulo) {
+		// TODO Auto-generated method stub
+		return this.historico;
 	}
 
 }

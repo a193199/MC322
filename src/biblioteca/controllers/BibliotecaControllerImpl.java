@@ -7,11 +7,17 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import biblioteca.exception.HIstoricoMultaException;
+import biblioteca.exception.ItemDanificadoException;
+import biblioteca.exception.ItemIndisponivelException;
+import biblioteca.exception.ItemNaoRelacionadoException;
+import biblioteca.exception.LimiteExcedidoException;
 import biblioteca.models.Categoria;
 import biblioteca.models.Emprestimo;
 import biblioteca.models.ItemMultimidia;
 import biblioteca.models.Membro;
 import biblioteca.models.Reserva;
+import biblioteca.models.ReservaSala;
 
 public class BibliotecaControllerImpl implements BibliotecaController {
 
@@ -35,13 +41,24 @@ public class BibliotecaControllerImpl implements BibliotecaController {
 	}
 
 	@Override
-	public boolean emprestarItem(Membro membro, ItemMultimidia item) {
+	public boolean emprestarItem(Membro membro, ItemMultimidia item)
+			throws LimiteExcedidoException, HIstoricoMultaException {
+		if (membro.getQtdadeEmprestimo() > membro.getLimiteEmprestimo()) {
+			throw new LimiteExcedidoException("Limite de emprestimos excedido");
+		} else if (membro.getMultaAtraso() > 0) {
+			throw new HIstoricoMultaException("Multa pendente. Regularize a situação");
+		}
 		return true;
 	}
 
 	@Override
-	public boolean devolverItem(Membro membro, ItemMultimidia item) {
-		// Lógica de devolução
+	public boolean devolverItem(Membro membro, ItemMultimidia item)
+			throws ItemNaoRelacionadoException, ItemDanificadoException {
+		if (membro.getHistorico(item.getTitulo()) == null) { // caso não consiga encontrar o item no histórico do membro
+			throw new ItemNaoRelacionadoException("Item não relacionado ao membro. Digite o item correto");
+		} else if (item.getStatus() == "danificado") {
+			throw new ItemDanificadoException("Item danificado, procure a administração");
+		}
 		return true;
 	}
 
@@ -53,18 +70,31 @@ public class BibliotecaControllerImpl implements BibliotecaController {
 	}
 
 	@Override
-	public Set<Emprestimo> adiconaEmprestimo(Emprestimo item) {
+	public Set<Emprestimo> adiconaEmprestimo(Emprestimo item) throws ItemIndisponivelException {
 		if (item.getStatus() == "disponivel") {
 			this.emprestimo.add(item);
 		} else {
 			this.reserva.add((Reserva) item);
+			throw new ItemIndisponivelException("Este item não está disponível, adicionamos a reserva.");
 		}
 
 		return emprestimo;
 	}
 
 	@Override
-	public List<Reserva> adiconarReserva(Reserva item) {
+	public List<Reserva> adiconarReserva(Reserva item) throws ItemIndisponivelException {
+		if(item.getStatus() != "disponivel") {
+			throw new ItemIndisponivelException("Este item não está disponível, adicionamos a reserva.");
+		}
+		this.reserva.add(item);
+		return reserva;
+	}
+	
+	@Override
+	public List<Reserva> adiconarReservaSala(ReservaSala item) throws ItemIndisponivelException {
+		if(item.getStatus() != "disponivel") {
+			throw new ItemIndisponivelException("Este item não está disponível, adicionamos a reserva.");
+		}
 		this.reserva.add(item);
 		return reserva;
 	}
@@ -80,7 +110,7 @@ public class BibliotecaControllerImpl implements BibliotecaController {
 		if (reserva.contains(item)) {
 			// adicona emprestimo para o próximo da fila
 		} else {
-		//lógica de item disponivel
+			// lógica de item disponivel
 		}
 
 	}

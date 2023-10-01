@@ -8,4 +8,22 @@ public class ReservaImpl implements Reserva {
 		super();
 		this.idMembro = idMembro;
 	}
+
+	@Override
+	public String getStatus() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int getLimite() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getQtdadePessoas() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }
