@@ -28,4 +28,11 @@ public class DVDdeVideo implements ItemMultimidia {
 		return null;
 	}
 
+	@Override
+	public Object buscar(long id) {
+		return id;
+		// TODO Auto-generated method stub
+		
+	}
+
 }

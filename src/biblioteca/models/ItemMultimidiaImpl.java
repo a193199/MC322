@@ -33,4 +33,9 @@ public class ItemMultimidiaImpl implements ItemMultimidia {
 		return ID;
 	}
 
+	public Object buscar(long id) {
+		return id;
+		// TODO Auto-generated method stub
+		
+	}
 }

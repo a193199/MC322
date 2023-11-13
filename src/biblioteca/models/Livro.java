@@ -22,5 +22,12 @@ public class Livro implements ItemMultimidia {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public Object buscar(long id) {
+		return id;
+		// TODO Auto-generated method stub
+		
+	}
 	
 }
