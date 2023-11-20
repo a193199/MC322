@@ -9,18 +9,13 @@ public class Funcionarios {
 	private String nome;
 	private int salario;
 	private String cargo;
-	private String login;
-	private int senha;
-	private boolean permissao;
 
-	public Funcionarios(int ID, String cargo, String nome, int salario, String login, int senha, boolean permissao) {
+
+	public Funcionarios(int ID, String cargo, String nome, int salario) {
 		this.ID = ID;
 		this.nome = nome;
 		this.salario = salario;
 		this.cargo = cargo;
-		this.senha=senha;
-		this.login=login;
-		this.permissao=permissao;
 	}
 
 	public int getID() {
@@ -55,23 +50,5 @@ public class Funcionarios {
 		this.salario = salario;
 	}
 
-	public String getLogin() {
-		return login;
-	}
 
-	public void setLogin(String login) {
-		this.login = login;
-	}
-
-	public int getSenha() {
-		return senha;
-	}
-
-	public void setSenha(int senha) {
-		this.senha = senha;
-	}
-
-	public boolean getPermissao() {
-		return permissao;
-	}
 }

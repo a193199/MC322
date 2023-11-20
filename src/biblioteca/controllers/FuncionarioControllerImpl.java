@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import biblioteca.exception.AcessoNegadoException;
+import biblioteca.models.FuncionarioLogin;
 import biblioteca.models.Funcionarios;
 
 public class FuncionarioControllerImpl implements FuncionarioController {
@@ -18,7 +19,7 @@ public class FuncionarioControllerImpl implements FuncionarioController {
 	}
 
 	@Override
-	public boolean acessoAoSistema(Funcionarios funcionario, String login, int senha) throws AcessoNegadoException {
+	public boolean acessoAoSistema(FuncionarioLogin funcionario, String login, int senha) throws AcessoNegadoException {
 		if (funcionario.getSenha() != senha || funcionario.getLogin() != login) {
 			throw new AcessoNegadoException("Acesso negado, verifique login e senha");
 		} else if (!funcionario.getPermissao()) {
@@ -26,4 +27,5 @@ public class FuncionarioControllerImpl implements FuncionarioController {
 		}
 		return true;
 	}
+
 }
