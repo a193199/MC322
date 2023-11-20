@@ -28,16 +28,23 @@ public class MembroControllerImpl implements MembroController {
 	@Override
 	public void adicionar(Membro membro) {
 		// TODO Auto-generated method stub
-		if(buscarMembroPorIdentificacao(membro.getIdentificacao()) != null) {
+		if (buscarMembroPorIdentificacao(membro.getIdentificacao()) != null) {
 			membros.add(membro);
 		}
-		System.out.println("Memebro já cadastrado");
+		membroMsg(1);
 	}
 
 	@Override
 	public void remover(Membro membro) {
 		membros.remove(membro);
-		
+
 	}
-    
+
+	public void membroMsg(int i) {
+		switch (i) {
+		case 1:
+			System.out.println("Memebro já cadastrado");
+			break;
+		}
+	}
 }
