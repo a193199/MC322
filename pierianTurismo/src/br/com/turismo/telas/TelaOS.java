@@ -278,7 +278,7 @@ public class TelaOS extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
-        setTitle("OS");
+        setTitle("PIERIAN - OS");
         setPreferredSize(new java.awt.Dimension(375, 64));
         setRequestFocusEnabled(false);
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
@@ -567,7 +567,7 @@ public class TelaOS extends javax.swing.JInternalFrame {
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(26, 26, 26))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 167, Short.MAX_VALUE)
                         .addGap(18, 18, 18)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -589,7 +589,7 @@ public class TelaOS extends javax.swing.JInternalFrame {
                     .addComponent(jLabel9)
                     .addComponent(txtOsValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnOsAdicionar)
                     .addComponent(btnOsPesquisar)
                     .addComponent(btnOsEditar)

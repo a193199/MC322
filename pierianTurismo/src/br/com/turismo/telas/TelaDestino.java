@@ -154,6 +154,7 @@ public class TelaDestino extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
+        setTitle("PIERIAN - Destinos");
         setPreferredSize(new java.awt.Dimension(518, 565));
 
         jLabel1.setText("Destino");

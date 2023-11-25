@@ -187,7 +187,7 @@ public class TelaCliente extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
-        setTitle("Clientes");
+        setTitle("PIERIAN - Clientes");
         setPreferredSize(new java.awt.Dimension(518, 565));
 
         jLabel1.setText("Nome*");

@@ -92,7 +92,7 @@ public class TelaLogin extends javax.swing.JFrame {
         lblStatus = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Sistema Turismo - Login");
+        setTitle("PIERIAN - Sistema Turismo - Login");
         setResizable(false);
 
         btnUsuario.setText("Usuário");

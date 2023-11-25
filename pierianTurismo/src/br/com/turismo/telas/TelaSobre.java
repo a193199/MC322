@@ -33,7 +33,7 @@ public class TelaSobre extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Sobre");
+        setTitle("PIERIAN - Sobre");
 
         jLabel1.setText("Controle de OS");
 

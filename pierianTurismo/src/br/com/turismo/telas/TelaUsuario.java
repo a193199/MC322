@@ -182,7 +182,7 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
-        setTitle("Usuários");
+        setTitle("PIERIAN - Usuários");
         setPreferredSize(new java.awt.Dimension(518, 565));
         try {
             setSelected(true);
