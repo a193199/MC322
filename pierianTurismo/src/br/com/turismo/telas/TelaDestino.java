@@ -209,6 +209,11 @@ public class TelaDestino extends javax.swing.JInternalFrame {
         jLabel6.setText("Categoria");
 
         cboDestCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Aventura", "Relaxamento", "Cultura", " " }));
+        cboDestCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboDestCategoriaActionPerformed(evt);
+            }
+        });
 
         btnDestAdicionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/turismo/icones/create2.png"))); // NOI18N
         btnDestAdicionar.setToolTipText("Adicionar");
@@ -319,6 +324,10 @@ public class TelaDestino extends javax.swing.JInternalFrame {
     private void btnDestAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDestAdicionarActionPerformed
         adicionar();        // TODO add your handling code here:
     }//GEN-LAST:event_btnDestAdicionarActionPerformed
+
+    private void cboDestCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboDestCategoriaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboDestCategoriaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
