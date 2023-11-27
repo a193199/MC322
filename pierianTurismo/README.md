@@ -34,3 +34,11 @@ Na aba "Buscar", é exibida a tela de destinos, onde é possível consultar os d
 
 Na aba "Ajuda", é exibida uma tela contendo algumas informações pertinentes:
 ![tela_sobre](https://github.com/a193199/MC322/assets/80798872/acbfd48b-34f2-447e-b7be-7317502d3da5)
+
+Links para os vídeos demonstrativos das funcionalidades do sitema
+* vídeo 1:
+https://github.com/a193199/MC322/assets/80798872/6a0698ab-6a9c-4e6b-a5e3-2bfe6e3b2be3
+* vídeo 2:
+https://github.com/a193199/MC322/assets/80798872/61ce5a46-4be1-4e9b-a96a-614f1762b70b
+* vídeo 3:
+https://github.com/a193199/MC322/assets/80798872/f2fc649c-e532-4979-b7fc-f9ba1dd4b3db
